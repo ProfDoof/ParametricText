@@ -909,6 +909,13 @@ def evaluate_text(text, sketch_text, next_version=False):
                 string_value = True
             elif member == 'newline':
                 value = '\n'
+            elif member == 'configuration':
+                top_table = design.configurationTopTable
+                if top_table:
+                    value = top_table.activeRow.name
+                else:
+                    value = f'<No configuration>'
+                string_value = True
             else:
                 return f'<Unknown member of {var_name}: {member}>'
         else:
